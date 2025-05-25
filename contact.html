@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COPD Gene Explorer - Contact</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css "/>
+  <link rel="stylesheet" href="styles.css"/>
+
+  <!-- Optional: Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto :wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+   
+
+    .contact-page {
+      padding: 4rem 0;
+    }
+
+    .contact-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      padding: 2.5rem;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-card h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    .contact-info p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #f9f9f9;
+    }
+
+    .email-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: 0 auto 2rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .email-box i {
+      font-size: 1.4rem;
+      color: var(--light-color);
+    }
+
+    .email-box a {
+      text-decoration: none;
+      color: var(--light-color);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .email-box:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .email-box a:hover {
+      color: var(--accent-color);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--light-color);
+    }
+
+    /* Form Styles */
+    .contact-form {
+      margin-top: 2rem;
+      display: none; /* Hidden for now, can be activated later */
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      background-color: #ffffff22;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+    }
+
+    .submit-btn {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #2980b9;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="container">
+    <h1 class="logo">COPD GENE EXPLORER</h1>
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="database.html"><i class="fas fa-database"></i> Database</a></li>
+      <li><a class="active" href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="container contact-page">
+  <section class="contact-section">
+    <div class="card contact-card">
+      <h2>Contact Us</h2>
+      <div class="contact-info">
+        <p>If you have any questions or need further assistance, feel free to reach out:</p>
+        <div class="email-box">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:tejasrireddy412@gmail.com">tejasrireddy412@gmail.com</a>
+        </div>
+
+        <!-- Optional Contact Form (currently hidden) -->
+        <div class="contact-form">
+          <form>
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="Enter your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" placeholder="Enter your email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" rows="5" placeholder="Write your message..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+      
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 COPD Gene Explorer. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

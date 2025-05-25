@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COPD Gene Explorer - Database</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css "/>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
+  <script defer src="script.js"></script>
+  <link href="https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="container">
+    <h1 class="logo">COPD GENE EXPLORER</h1>
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a class="active" href="#"><i class="fas fa-database"></i> Database</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="container database-page" data-aos="fade-up">
+  <!-- Search Card -->
+  <div class="card search-card">
+    <h3>🔍 Gene Search</h3>
+    <div class="search-wrapper">
+      <div class="input-group">
+        <div class="input-icon">
+          <i class="fas fa-dna"></i>
+          <input 
+            type="text" 
+            id="geneInput" 
+            class="input-field" 
+            placeholder="Enter gene name (e.g., CHRNA3)"
+            aria-label="Gene Name"
+          >
+        </div>
+        <button class="btn search-btn" onclick="searchGene()">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Section -->
+  <section class="results-section">
+    <div id="geneResult" class="card results-card"></div>
+  </section>
+
+  <!-- PRS Chart Section -->
+  <section class="chart-section">
+    <div class="card chart-card">
+      <h3>📊 PRS Score Distribution</h3>
+      <div id="chartContainer">
+        <canvas id="prsChart"></canvas>
+        <div id="noDataPlaceholder" class="placeholder">
+          <p>Search for a gene to view PRS distribution</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 COPD Gene Explorer. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos @next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</body>
+</html>
