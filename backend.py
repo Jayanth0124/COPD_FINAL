@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend access
 
 # Load the PRS dataset
-df = pd.read_excel("prs_data.xlsx")  # Ensure correct path to the Excel file
+df = pd.read_csv("prs_data.xlsx - SNP_Effect_Sizes.csv") # Corrected from pd.read_excel("prs_data.xlsx")
 
 @app.route("/search")
 def search_gene():
