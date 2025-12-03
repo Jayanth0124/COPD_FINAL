@@ -12,12 +12,9 @@ async function loadData() {
 
         // NOTE: The loaded JSON data from copd_data.json is missing 
         // the "Effect Size (Beta)" field crucial for PRS calculation.
-        // We'll add a dummy column so the PRS calculation logic works 
-        // without a TypeError, but results are non-scientific until 
-        // real effect size data is included.
+        // A placeholder column (value = 0.2) is added to the DataFrame
         copdData = copdData.map(record => ({
             ...record,
-            // Use 0.2 as a placeholder for each SNP
             "Effect Size (Beta)": record["Effect Size (Beta)"] !== undefined ? record["Effect Size (Beta)"] : 0.2
         }));
         
@@ -43,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function searchGene() {
-    const geneName = document.getElementById("geneInput").value.trim().toUpperCase();
+    const input = document.getElementById("geneInput").value.trim().toUpperCase();
     const resultDiv = document.getElementById("geneResult");
     const chartCanvas = document.getElementById("prsChart");
     const placeholder = document.getElementById("noDataPlaceholder");
@@ -54,21 +51,39 @@ function searchGene() {
     placeholder.style.display = "flex";
     placeholder.querySelector("p").textContent = "Searching for PRS data...";
 
-    if (!geneName) {
-        resultDiv.innerHTML = "<p style='color:red;'>Please enter a gene name.</p>";
+    if (!input) {
+        resultDiv.innerHTML = "<p style='color:red;'>Please enter a Gene Name or SNP ID.</p>";
         resultDiv.style.display = "block";
         return;
     }
     
-    // Check if data is loaded
     if (copdData.length === 0 || copdData[0]["Effect Size (Beta)"] === undefined) {
         resultDiv.innerHTML = "<p style='color:red;'>Data is unavailable. Please check the console for loading errors.</p>";
         resultDiv.style.display = "block";
         return;
     }
+    
+    // Determine search type and filter logic
+    let geneData = [];
+    let geneName = input;
+    
+    // Check if input is likely an SNP ID (starts with 'RS' or 'rs')
+    if (input.startsWith('RS') || input.startsWith('R S')) {
+        // Find the gene name associated with the SNP ID
+        const snpRecord = copdData.find(row => row["SNP ID"].toUpperCase() === input);
+        
+        if (snpRecord) {
+            geneName = snpRecord["Gene Name"].toUpperCase();
+        } else {
+            resultDiv.innerHTML = `<p style="color:red;">SNP ID ${input} not found in the database.</p>`;
+            resultDiv.style.display = "block";
+            return;
+        }
+    }
+    
+    // Filter gene data based on the determined geneName
+    geneData = copdData.filter(row => row["Gene Name"].toUpperCase() === geneName);
 
-    // 1. Filter gene data
-    const geneData = copdData.filter(row => row["Gene Name"].toUpperCase() === geneName);
 
     if (geneData.length === 0) {
         resultDiv.innerHTML = `<p style="color:red;">Gene ${geneName} not found.</p>`;
